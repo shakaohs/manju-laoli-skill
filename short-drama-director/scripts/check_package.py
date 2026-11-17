@@ -2737,6 +2737,34 @@ check('◑28 P12 标签/状态/C40/显式桥接/五码与多格式真实CLI回�
       _p12.returncode == 0 and re.search(r'(?m)^OK$', _p12.stderr) is not None,
       (_p12.stdout + _p12.stderr)[-2000:])
 
+# ------------------------------------------------- [E*37] 故事连续性与三模式路由域（2026-11-17）
+# 目标：防止新建的模式路由/故事状态文件成为孤儿规则；验证入口、规划、圣经、QC 四处接线。
+_sc = read(os.path.join(PKG, "sd-script-engine", "references", "story-continuity-engine.md"))
+_cm = read(os.path.join(PKG, "sd-script-engine", "references", "continuation-mode.md"))
+_epc = read(os.path.join(PKG, "sd-script-engine", "references", "episode-planning.md"))
+_sbc = read(os.path.join(PKG, "sd-script-engine", "references", "story-bible-and-ip.md"))
+_sks = read(os.path.join(PKG, "sd-script-engine", "SKILL.md"))
+_mstr = read(os.path.join(BASE, "SKILL.md"))
+_qcs = read(os.path.join(PKG, "sd-qc-engine", "SKILL.md"))
+check("E*37-1 两份核心规程存在且关键状态域齐备",
+      bool(_sc) and bool(_cm)
+      and all(k in _sc for k in ("Event Ledger", "Knowledge & Evidence", "Promise & Debt",
+                                 "OPEN_ITEM", "USER_OVERRIDE", "NEXT_ENTRY_CONTRACT"))
+      and all(k in _cm for k in ("ORIGINAL", "ADAPTATION", "CONTINUATION",
+                                 "ADAPTATION_CONTINUATION", "模式切换门禁")))
+check("E*37-2 剧本引擎入口与规则索引接线完整",
+      "continuation-mode.md" in _sks and "story-continuity-engine.md" in _sks
+      and "三模式路由与故事连续性" in _sks and "续写强制读取" in _sks)
+check("E*37-3 分集卡已接入状态差分、认知隔离、钩子债务与下一集入口合同",
+      all(k in _epc for k in ("ENTRY_STATE", "STATE_DELTA", "KNOWLEDGE_DELTA",
+                              "OPEN_DEBTS", "NEXT_ENTRY_CONTRACT", "对手策略与因果升级")))
+check("E*37-4 故事圣经已区分静态人物设定与动态人物状态",
+      all(k in _sbc for k in ("人物静态设定与动态状态分离", "人物弧光必须可追踪",
+                              "关系矩阵升级", "知识与秘密分层")))
+check("E*37-5 总控路由与质检验收已接入故事层连续性",
+      "continuation-mode.md" in _mstr and "story-continuity-engine.md" in _mstr
+      and "故事层连续性验收" in _qcs and "视觉连续性唯一权威" in _qcs)
+
 # ---------------------------------------------------------------- 汇总
 print()
 print("-" * 62)
