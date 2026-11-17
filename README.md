@@ -12,7 +12,7 @@
 ![Version](https://img.shields.io/badge/版本-V7.5.0--SLIM-6a5acd)
 ![Structure](https://img.shields.io/badge/结构-1%20总控%20%7C%2010%20子技能-8e44ad)
 ![Rulebooks](https://img.shields.io/badge/规则库-48%20份-00b4d8)
-![Files](https://img.shields.io/badge/文件-155-2ec4b6)
+![Files](https://img.shields.io/badge/文件-160-2ec4b6)
 ![Models](https://img.shields.io/badge/模型-Seedance%202.5%20%7C%202.0-9d4edd)
 ![QC](https://img.shields.io/badge/机检-C1~C41-ff6b6b)
 ![Platform](https://img.shields.io/badge/平台-OpenClaw%20%7C%20Coze%20%7C%20Dify%20%7C%20WorkBuddy-ff9f43)
@@ -173,7 +173,7 @@ python3 short-drama-director/scripts/build_board_lite.py <项目.md>
 ## 📦 项目结构
 
 ```
-lixiaoxiao9888-create/manju-laoli-skill/        # V7.5.0-SLIM 精简套装（155 文件）
+shakaohs/manju-laoli-skill/                    # V7.5.0-SLIM 精简套装（160 文件）
 ├── README.md                                   # 本落地页（中文 + English）
 ├── LICENSE / .gitignore
 ├── short-drama-director/                       # L0 总控（68 文件 · 48 份规则库 · 机检脚本）
@@ -197,6 +197,7 @@ lixiaoxiao9888-create/manju-laoli-skill/        # V7.5.0-SLIM 精简套装（155
 
 ## 📜 更新历史
 
+- **故事引擎升级补丁（本分支候选）** — 新增原创/改编/续写/改编续写四模式路由；新增故事连续性账本（事件、人物认知、关系、证据、承诺与悬念债务）；增强状态驱动分集卡与故事圣经动态人物状态；总控与质检接线，并在 `check_package.py` 增加 E*37 回归断言。尚待完整包级回归运行与合并。
 - **V7.5.0-SLIM 精简版**（本轮）— **瘦身**：删去海外剧剧本（`sd-overseas-engine`）与解说叙事（`sd-jieshuo-engine`）两个子技能、赛道分流唯一权威文件（原 `references/` 下，已删）、〇·0 赛道分流锁，子技能 **12 → 10**、六道锁 → **五道锁**；判据体系一条未改（详见 `CHANGELOG.md` 沿革）。
 - **历史补丁 V7.4.26 P14**（2026-11-03，`CHANGELOG.md` 存档）— **案例示例整体剔除 + 判据级去重 + 文档瘦身**：删除全部成稿示例（4 份示例文件 + 30 余处正文示范段 + 填写示例），只留规则、公式与反例约束；`gate_check.py` 与 `validate_prompt.py` 的重复判据合并为单一实现（同一语气位/镜长/七段缺栏不再查两遍），出稿质检从三跑变一跑；README / CHANGELOG / 补丁说明全部精简。
 - **V7.4.26 补丁 P13 及更早** — 见 [`short-drama-director/CHANGELOG.md`](short-drama-director/CHANGELOG.md)（V7.4.26 系列全文保留，更早版本压成一行摘要表）。
