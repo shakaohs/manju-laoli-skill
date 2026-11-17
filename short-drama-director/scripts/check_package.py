@@ -2763,7 +2763,7 @@ check("E*37-4 故事圣经已区分静态人物设定与动态人物状态",
                               "关系矩阵升级", "知识与秘密分层")))
 check("E*37-5 总控路由与质检验收已接入故事层连续性",
       "continuation-mode.md" in _mstr and "story-continuity-engine.md" in _mstr
-      and "故事层连续性验收" in _qcs and "视觉连续性唯一权威" in _qcs)
+      and "故事层连续性验收" in _qcs and "视觉制作层连续性唯一权威" in _qcs)
 
 # ---------------------------------------------------------------- 汇总
 print()
