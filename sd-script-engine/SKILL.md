@@ -202,3 +202,31 @@ B. 完整执行：自动完成IP、全局开发、分集与剧本；每批剧本
 ## 九、禁止越界
 
 不把小说改成完全不同的故事；不因「爆款」目标牺牲来源因果和人物逻辑；不把每集切成互不相干的名场面；不使用假黑屏、半句话截断或重复上集代替钩子；不伪装真实观众调研；不让圆桌直接改正文；不让精修团队绕过原小说和锁定上游；不自动越过任何用户决策门；不越过本引擎边界去生产资产、分镜、投喂提示词或视频——那是 sd-asset-engine、分镜引擎和总控的职责。
+
+## 十、三模式路由与故事连续性（V1.0）
+
+本引擎在原六阶段链之上增加统一故事状态层，不改变既有五道锁、六阶段门禁、五席圆桌和用户授权机制。
+
+### 10.1 模式识别先于阶段执行
+- 模式识别与素材来源锁是两个维度。素材来源锁仍按总控〇·1执行；创作模式按 [continuation-mode.md](references/continuation-mode.md) 识别为 ORIGINAL / ADAPTATION / CONTINUATION / ADAPTATION_CONTINUATION。
+- 用户已明确任务模式，不重复询问；已有正典剧本并要求从断点继续时，默认进入续写模式，不得重新走原创开发流程。
+- 输入不足时只询问最关键缺口；缺失集数、原作章节或账本不得假装已读。
+
+### 10.2 故事连续性账本为跨阶段状态中枢
+- 每个项目维护 `STORY_CONTINUITY_LEDGER.md` 与可选 `STORY_CONTINUITY_STATE.json`；不支持文件写入的平台维护对话内逻辑账本，不得声称写入磁盘。
+- 账本至少覆盖事件、人物目标/动机/认知、关系变化、知识隔离、证据流转、承诺债务、悬念伏笔、开放问题与变更日志。
+- 故事层账本与 sd-qc-engine 的视觉连续性账本分工明确：前者管因果/认知/关系/证据/悬念，后者管外观/服装/道具/空间/镜头等视听状态。
+- 每集锁稿后执行状态差分；只有已写成并确认的事件进入正典。计划和草稿不得提前写入已发生事实。
+
+### 10.3 续写强制读取与承接
+续写前必须读取本轮指令、最近连续的已确认剧本、最新故事连续性账本、人物关系/认知状态、证据链、未偿承诺与钩子、锁定分集卡和禁改项；改编续写还须读取对应原作章节及改编追踪表。缺失材料列为 OPEN_ITEM 并请求补充/确认。
+每集开场继承上一集出口状态；每集至少推动一个可观察状态变量；结尾钩子进入债务账本，下一集必须回应或明确推进。
+
+### 10.4 事实标签与冲突处理
+统一使用 FACT / INFERENCE / ASSUMPTION / USER_OVERRIDE / OPEN_ITEM / REJECTED。发现时间、人物认知、动机、关系、资源、证据、伤势、承诺或悬念冲突时，输出 CONTINUITY_ISSUE（P0/P1/P2、证据、影响、修复选项），不得悄悄修改正典。完整规程见 [story-continuity-engine.md](references/story-continuity-engine.md)。
+
+### 10.5 规则库索引增补
+| 文件 | 内容 |
+|---|---|
+| [references/continuation-mode.md](references/continuation-mode.md) | ORIGINAL / ADAPTATION / CONTINUATION / ADAPTATION_CONTINUATION 路由、模式专属工作流、断点识别与模式切换门禁 |
+| [references/story-continuity-engine.md](references/story-continuity-engine.md) | 故事状态账本、人物与关系状态、知识隔离、证据链、承诺/悬念债务、跨集差分和冲突检测 |
